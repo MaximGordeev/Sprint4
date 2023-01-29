@@ -28,6 +28,7 @@ public class TestImportantQuestions {
                                                 "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.",
                                                 "Да, обязательно. Всем самокатов! И Москве, и Московской области."};
 
+
    @Before
    public void beforeSteps(){
       System.setProperty("webdriver.chrome.driver", "C:\\chromeDriver\\chromedriver.exe");
@@ -43,6 +44,7 @@ public class TestImportantQuestions {
       Assert.assertArrayEquals(EXPECTED_TEXTS, objMainPage.clickAllDifferentQuestionsAndReturnThem());
 
    }
+
    @After
    public void tearDown(){
       driver.quit();
