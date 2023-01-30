@@ -40,7 +40,7 @@ public class MainPage {
         WebElement element = driver.findElement(HEADER_TEXT_IMPORTANT_QUESTIONS);
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
     }
-    public String[] clickAllDifferentQuestionsAndReturnThem(){
+    public void clickAllDifferentQuestionsAndReturnThem(String[] EXPECTED_TEXTS){
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOfAllElements(driver.findElements(IMPORTANT_QUESTIONS)));
         List<WebElement> elements = driver.findElements(IMPORTANT_QUESTIONS);
@@ -51,10 +51,10 @@ public class MainPage {
             i.next().click();
             String idAccordion = "accordion__panel-" + k;
             actualText[k] = driver.findElement(By.id(idAccordion)).getText();
-            //Assert.assertEquals(EXPECTED_TEXTS[k],actualText[k]);
+            Assert.assertEquals("ошибка в ответе на вопрос: "+ elements.get(k).getText(),EXPECTED_TEXTS[k],actualText[k]);
             k++;
         }
-        return actualText;
+
     }
     public void clickOnOrderButton(By orderButton){
         driver.findElement(orderButton).click();

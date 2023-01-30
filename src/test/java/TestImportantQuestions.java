@@ -31,7 +31,7 @@ public class TestImportantQuestions {
 
    @Before
    public void beforeSteps(){
-      System.setProperty("webdriver.chrome.driver", "C:\\chromeDriver\\chromedriver.exe");
+      System.setProperty("webdriver.chrome.driver", "C:\\WebDrivers\\chrome\\chromedriver.exe");
       driver = new ChromeDriver();
       driver.get(SITE_URL);
       driver.findElement(COOKIE_BUTTON).click();
@@ -41,7 +41,7 @@ public class TestImportantQuestions {
    public void testAnswersInImportantQuestions(){
       MainPage objMainPage = new MainPage(driver);
       objMainPage.scrollToElement();
-      Assert.assertArrayEquals(EXPECTED_TEXTS, objMainPage.clickAllDifferentQuestionsAndReturnThem());
+      objMainPage.clickAllDifferentQuestionsAndReturnThem(EXPECTED_TEXTS);
 
    }
 
